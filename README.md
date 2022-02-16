@@ -28,7 +28,7 @@ Then navigate to the folder for your school.
 
 Click the "Add File" button and the "Upload Files" button that appears in the drop-down menu.
 
-<p align="center"><img width="1000" alt="2  Go to upload" src="https://user-images.githubusercontent.com/357174/154197535-6cbde015-a537-4bd0-8ecd-0c35b62ad935.png"></p>
+<img width="1000" alt="2  Go to upload" src="https://user-images.githubusercontent.com/357174/154197535-6cbde015-a537-4bd0-8ecd-0c35b62ad935.png">
 
 Drag and drop the files that you wish to upload.
 
