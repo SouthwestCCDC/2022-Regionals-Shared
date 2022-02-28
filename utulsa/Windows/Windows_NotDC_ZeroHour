@@ -1,0 +1,40 @@
+##CCDC Zero Hour Windows Script FOR NON-AD BOXES##
+#Written By: Sean Williams#
+
+#Ensure that all network connections are killed before securing the box.
+Write-Host "Kill The Network Connection Before Running This Script!" -BackgroundColor red 
+
+Pause 
+
+# [1] Disable guest account
+Write-Host "---------------------------------------------"
+Write-Host "[1] DEACTIVATE GUEST ACCOUNT"
+Write-Host "---------------------------------------------"
+net user guest /active:no 
+Write-Host "Guest Account deactivated!" -backgroundColor green
+
+# [2] iterate through all local users, and ask if the account should be DELETED.
+Write-Host "---------------------------------------------"
+Write-Host "[2] DELETE UNEEDED ACCOUNTS"
+Write-Host "---------------------------------------------"
+$users = get-localuser
+foreach ($user in $users) {
+    $userPrompt = Read-host - "Should user '$user' be retained on this system? Type N to Delete, or any other key to retain. THIS CANNOT BE UNDONE!"
+    if ($userPrompt -eq 'N') {
+        net user $user /del
+        Write-Host "User $user DELETED!" -BackgroundColor red
+    } #if statement to check if user input = N
+    else {
+        net user $user /active:yes
+        Write-Host "User $user RETAINED!" -BackgroundColor green
+    } #if statement to check if user input != N
+} #End of foreach loop
+Write-Host "END OF LOCAL USERS" -BackgroundColor Red
+
+# [3] Block Common Ports in Firewall
+Write-Host "---------------------------------------------"
+Write-Host "[3] BLOCK COMMON PORTS"
+Write-Host "---------------------------------------------"
+netsh advfirewall firewall add rule name="BlockPort" protocol=TCP dir=in localport=445,137,138,138,5800,5900 action=block
+Write-Host "Done!" -BackgroundColor Red
+pause
