@@ -1,0 +1,41 @@
+{
+    "allowed-user": [
+        "kevin",
+        "unset",
+        "root"
+    ],
+    "rules": [
+        "-w /usr/bin/dockerd -k docker",
+        "-w /usr/bin/docker -k docker",
+        "-w /usr/bin/docker-containerd -k docker",
+        "-w /usr/bin/docker-runc -k docker",
+        "-w /var/lib/docker -k docker",
+        "-w /etc/docker -k docker",
+        "-w /etc/sysconfig/docker -k docker",
+        "-w /etc/sysconfig/docker-storage -k docker",
+        "-w /usr/lib/systemd/system/docker.service -k docker"
+    ],
+    "bonkable": [
+        "unauthedfileaccess",
+        "perm_mod",
+        "etcpasswd",
+        "etcgroup",
+        "opasswd",
+        "group_modification",
+        "user_modification",
+        "pam",
+        "specialfiles",
+        "cron",
+        "sshd",
+        "systemd",
+        "power",
+        "priv_esc",
+        "susp_activity",
+        "sbin_susp",
+        "shell_profiles",
+        "software_mgmt",
+        "data_injection",
+        "register_injection",
+        "tracing"
+    ]
+}
