@@ -1,7 +1,18 @@
 ## Bonk
 
 Turns linux kernel audit features into a death weapon.
-You violate the bonk you must be bonked.
+
+auditd links:
+https://capsule8.com/blog/auditd-what-is-the-linux-auditing-system/
+https://linux.die.net/man/8/auditd
+
+Basically, `auditd` logs syscalls based on configuration files.
+Bonk extends the features of `auditd` for security purpose by bonking processes that have keys that match the ones that we do not trust
+(I.E., `sudo` has the key `priv_esc`. Next set `priv_esc` set in `config.json` under `bonkable`. Then if you use mode `bonk` every call to the `sudo` binary is sigkilled)
+
+
+> You violate the bonk you must be bonked.
+
 
 ⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
 ⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
@@ -21,7 +32,6 @@ You violate the bonk you must be bonked.
 ⠄⠄⠄⠄⠄⠄⠄⠄⠄⠙⡮⡣⡁⠄⠄⠄⠄⠄⠄⠈⠨⡢⡪⠢⠋⠄⠄⠄⠄⠄⠁⠄⠨⡢⡑⡅⢕⠕⣕⢳⢹⢸⢪⢳⡹⡮⡯⡷⡅⠄
 ⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⢯⢎⢆⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠁⠄⠄⠄⠄⠈⠄⠄⠄⠈⠂⠑⠘⠐⠑⠘⠘⠘⠘⠘⠊⠙⠙⠙⠋⠃⠄
 
-https://serverfault.com/questions/752455/what-is-the-correct-way-to-generate-etc-audit-audit-rules-on-centos7
 
 This is a very portable binary. It installs its config file and its own rules
 
